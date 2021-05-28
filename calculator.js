@@ -57,7 +57,7 @@ class Calculator {
         if (isNaN(this.currentOperand) && this.currentOperand !== "." && !this.currentOperand.startsWith("-")) {
             this.clear();
         }
-        if (number === "." && this.currentOperand.includes(".")) return;
+        if (number === "." && this.currentOperand.toString().includes(".")) return;
         if (this.currentOperand.toString().length < 16) {
             this.currentOperand = this.currentOperand.toString() + number.toString();
         }
@@ -75,7 +75,7 @@ class Calculator {
             this.compute();
         }
 
-        if ((this.operation === "*" || this.operation === "/" || this.operation === "√") && operation === "-") {
+        if ((this.operation === "*" || this.operation === "/" || this.operation === "√" || this.operation === "^") && operation === "-") {
             this.currentOperand = "-";
         } else {
             this.operation = operation;
@@ -95,7 +95,7 @@ class Calculator {
                 break;
 
             case "-":
-                computation = isNaN(previous) ? 0 : previous - current;
+                computation = isNaN(previous) ? -current : previous - current;
                 break;
 
             case "*":
