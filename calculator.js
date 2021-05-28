@@ -91,19 +91,19 @@ class Calculator {
         if (this.operation !== "√" && isNaN(current)) return;
         switch (this.operation) {
             case "+":
-                computation = !previous ? 0 : previous + current;
+                computation = isNaN(previous) ? 0 : previous + current;
                 break;
 
             case "-":
-                computation = !previous ? 0 : previous - current;
+                computation = isNaN(previous) ? 0 : previous - current;
                 break;
 
             case "*":
-                computation = !previous ? 0 : previous * current;
+                computation = isNaN(previous) ? 0 : previous * current;
                 break;
 
             case "/":
-                if (current === 0 || !previous) {
+                if (current === 0 || isNaN(previous)) {
                     computation = errorMessage;
                 } else {
                     computation = previous / current;
